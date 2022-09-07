@@ -1,9 +1,3 @@
-<script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
   <div>
     <a href="https://vitejs.dev" target="_blank">
@@ -15,6 +9,27 @@ import HelloWorld from './components/HelloWorld.vue'
   </div>
   <HelloWorld msg="Vite + Vue" />
 </template>
+
+<script setup lang="ts">
+// This starter template is using Vue 3 <script setup> SFCs
+// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
+import HelloWorld from "./components/HelloWorld.vue";
+
+import axios from "axios";
+
+const getData = async () => {
+  const { data } = await axios({
+    method: "GET",
+    url: `${import.meta.env.VITE_BASE_URL}/get`,
+  });
+
+  console.log(data);
+
+  console.log(import.meta.env.VITE_BASE_URL);
+};
+
+getData();
+</script>
 
 <style scoped>
 .logo {
